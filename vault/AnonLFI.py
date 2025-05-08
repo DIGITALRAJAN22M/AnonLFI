@@ -95,7 +95,7 @@ class AnonLFI:
                 response = requests.get(self.url, params={param: random_string}, verify=False)
                 response_lengths.append(len(response.content))
         except requests.exceptions.ConnectionError:
-            console.print("[bold red]Request Failed (possible WAF block)...[/bold red]")
+            console.print("[bold red]Request Failed (⚠️ Response suggests WAF protection in place)...[/bold red]")
             return False, None
 
         def send_request(file_path, file_regex, param_name):
