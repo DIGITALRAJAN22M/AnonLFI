@@ -10,14 +10,30 @@
 
 ## 📌 Features
 
-- 🎯 Fast detection of Local File Inclusion (LFI) vulnerabilities
-- 🔍 Dynamic Payload Selection: Choose between the default wordlist or supply your own custom payload list at runtime for enhanced flexibility during scans.
--⚙️ Thread Handling Support: Configure the number of threads to speed up scanning—default is 50 threads, but users can adjust as needed for performance tuning.
--🧠 Intelligent Prompting: Automatically prompts for custom wordlist and threading preferences when selecting the AnonLFI module, streamlining the workflow.
--📊 Real-Time Feedback: Get clear console feedback on detection status and further actions like exploiting or shell access.
-- 🧠 Modular architecture for easy extensibility
-- 🎨 Interactive terminal interface using `rich` and `prompt_toolkit`
-- 🤖 Built for penetration testers and bug bounty hunters
+🎯 Fast Detection of Local File Inclusion (LFI) Vulnerabilities
+Quickly identifies LFI issues in web applications using efficient scanning techniques.
+
+🔍 Dynamic Payload Selection
+Offers the flexibility to either use a built-in default payload wordlist or supply your own custom wordlist during runtime.
+
+⚙️ Thread Handling Support
+Boost scan performance by configuring the number of concurrent threads—default is 50, but easily customizable by the user.
+
+🧠 Intelligent Prompting System
+Automatically prompts users to specify a custom wordlist and thread count when selecting the AnonLFI module, enhancing user control without adding complexity.
+
+📊 Real-Time Detection Feedback
+Provides immediate visual feedback through the terminal, including detection status and options to exploit or interact further upon successful identification.
+
+🧠 Modular Architecture
+Designed for extensibility, allowing easy integration of new modules or vulnerability checkers in the future.
+
+🎨 Interactive Terminal UI
+Built using rich and prompt_toolkit for a visually appealing, interactive, and user-friendly command-line experience.
+
+🤖 Made for Hackers by Hackers
+Purpose-built for penetration testers, CTF players, and bug bounty hunters to simplify and automate LFI discovery and exploitation.
+
 
 ---
 
