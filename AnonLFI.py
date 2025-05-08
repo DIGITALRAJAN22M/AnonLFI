@@ -20,7 +20,10 @@ class Module:
 
     def run(self):
         result, param_name = getattr(self.checker, self.check_method)()
-        console.print(f"[bold white]Oh No !! LFI detected ([magenta][/bold white]{self.checker.__class__.__name__}[/magenta][bold white]):[/bold white] {result}")
+        if result:
+            console.print(f"[bold white]Oh No !! LFI detected ([magenta][/bold white]{self.checker.__class__.__name__}[/magenta][bold white]):[/bold white] {result}")
+        else:
+            console.print(f"[bold green]🟢 Scan complete: No LFI issues discovered. ({self.checker.__class__.__name__}).[/bold green]")
 
         if result == True and self.action:
             choice = console.input(f"[bold blue]Select an action (1: [green]{self.action}[/green], 2: [red]Skip[/red]): ")
@@ -36,9 +39,9 @@ def banner():
     banner = '''[bold blue]
 _______                        ______ __________________
 ___    |_______ ______ _______ ___  / ___  ____/____  _/
-__  /| |__  __ \_  __ \__  __ \__  /  __  /_     __  /  
+__  /| |__  __ \\_  __ \\__  __ \\__  /  __  /_     __  /  
 _  ___ |_  / / // /_/ /_  / / /_  /____  __/    __/ /   
-/_/  |_|/_/ /_/ \____/ /_/ /_/ /_____//_/       /___/   
+/_/  |_|/_/ /_/ \\____/ /_/ /_/ /_____//_/       /___/   
 
        [cyan]Tool:[/cyan][green] AnonLFI[/green]   [cyan]Author:[/cyan][green] ANONDGR[/green]
 '''
@@ -78,8 +81,7 @@ def main():
                         break
                     elif int(choice) == len(modules) + 2:
                         console.print("[bold green]Goodbye ANONDGR! Stay safe out there.[/bold green]")
-                        return  # or exit()
-
+                        return
                     else:
                         console.print("[bold red]Oh No ! Invalid Option You Have Choosed Try Again ! [/bold red]")
                 elif choice == "":
@@ -93,4 +95,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
