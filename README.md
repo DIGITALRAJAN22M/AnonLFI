@@ -12,12 +12,9 @@
 
 - 🎯 Fast detection of Local File Inclusion (LFI) vulnerabilities
 - 🔍 Dynamic Payload Selection: Choose between the default wordlist or supply your own custom payload list at runtime for enhanced flexibility during scans.
-
-⚙️ Thread Handling Support: Configure the number of threads to speed up scanning—default is 50 threads, but users can adjust as needed for performance tuning.
-
-🧠 Intelligent Prompting: Automatically prompts for custom wordlist and threading preferences when selecting the AnonLFI module, streamlining the workflow.
-
-📊 Real-Time Feedback: Get clear console feedback on detection status and further actions like exploiting or shell access.
+-⚙️ Thread Handling Support: Configure the number of threads to speed up scanning—default is 50 threads, but users can adjust as needed for performance tuning.
+-🧠 Intelligent Prompting: Automatically prompts for custom wordlist and threading preferences when selecting the AnonLFI module, streamlining the workflow.
+-📊 Real-Time Feedback: Get clear console feedback on detection status and further actions like exploiting or shell access.
 - 🧠 Modular architecture for easy extensibility
 - 🎨 Interactive terminal interface using `rich` and `prompt_toolkit`
 - 🤖 Built for penetration testers and bug bounty hunters
