@@ -136,7 +136,8 @@ This tool is for **authorized testing and educational purposes only**.
 ---
 ## 🎬 Demo Video  
 🎥 **Watch the tool in action here**:  
-👉 [https://youtu.be/oQpljfH4okY](https://youtu.be/oQpljfH4okY)
+[![AnonLFI Demo](https://img.youtube.com/vi/oQpljfH4okY/0.jpg)](https://www.youtube.com/watch?v=oQpljfH4okY)
+
 
 
 🔗 Connect with the Author
