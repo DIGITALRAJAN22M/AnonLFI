@@ -134,6 +134,10 @@ This tool is for **authorized testing and educational purposes only**.
 > *Built with ❤️ for the cybersecurity community.*
 
 ---
+## 🎬 Demo Video  
+🎥 **Watch the tool in action here**:  
+👉 [https://youtu.be/oQpljfH4okY](https://youtu.be/oQpljfH4okY)
+
 
 🔗 Connect with the Author
 Want to collaborate, learn together, or just vibe on cybersecurity?
