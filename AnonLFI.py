@@ -63,7 +63,7 @@ __  /| |__  __ \\_  __ \\__  __ \\__  /  __  /_     __  /
 _  ___ |_  / / // /_/ /_  / / /_  /____  __/    __/ /   
 /_/  |_|/_/ /_/ \\____/ /_/ /_/ /_____//_/       /___/   
 
-       [cyan]Tool:[/cyan][green] AnonLFI[/green]   [cyan]Author:[/cyan][green] ANONDGR[/green]
+       [cyan]Tool:[/cyan][green] AnonLFI[/green]   [cyan]Author:[/cyan][green] ANONDGR (Rajan Kumar Barik)[/green]
 '''
     console.print(banner, style="bold magenta")
 
